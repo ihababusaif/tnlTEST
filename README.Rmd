@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # tnlTEST
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/ihababusaif/tnlTEST/branch/master/graph/badge.svg)](https://codecov.io/gh/ihababusaif/tnlTEST?branch=master)
 <!-- badges: end -->
 
 The goal of tnlTEST is to provide functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons.
