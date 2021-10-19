@@ -1,0 +1,51 @@
+Package: tnlTEST
+Type: Package
+Title: Non-parametric Tests for the Two-Sample Problem
+Version: 0.1.0
+Authors@R: c(
+     person(given="Ihab",
+           family="Abusaif", 
+           email = "censtat@gmail.com", 
+           role =c( "cre","aut")),
+     person(given="Sümeyra",
+           family="Sert", 
+           email = "sumeyrasert1@gmail.com", 
+           role =c("aut","ctb")),
+     person(given="Coşkun",
+           family="Kuş", 
+           email = "coskun@selcuk.edu.tr", 
+           role =c("aut","ctb"),
+           comment = c("https://www.selcuk.edu.tr/Personel/coskun")),
+     person(given="Kadir",
+           family="Karakaya", 
+           email = "kkarakaya@selcuk.edu.tr", 
+           role =c("aut","ctb"),
+           comment = c(ORCID = "0000-0002-0781-3587")),
+     person(given="Hon Keung Tony",
+           family="Ng", 
+           role =c("aut")),
+     person(given="Haikady N.",
+           family="Nagaraja", 
+           role =c("aut"))
+           )
+Description: R functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons.
+Details: This package contains functions to calculate the density, distribution function, quantile function, random number generation, test statistic, density under Lehmann alternatives and distribution function under Lehmann alternatives.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Imports: 
+    mathjaxr,
+    partitions,
+    plyr,
+    progress
+Suggests: 
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+RdMacros: mathjaxr
+Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
+URL: https://github.com/ihababusaif/tnlTEST
+BugReports: https://github.com/ihababusaif/tnlTEST/issues

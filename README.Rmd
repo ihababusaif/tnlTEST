@@ -1,0 +1,96 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# tnlTEST
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of tnlTEST is to provide functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons.
+
+## Installation
+
+You can install the released version of tnlTEST from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tnlTEST")
+```
+
+## Details 
+A non-parametric two-sample test is performed for testing null hypothesis ${H_0:F=G}$ against the alternative hypothesis ${H_1:F\not=G}$. The assumptions of the ${T_n^{(\ell)}}$  test are that both samples should come from a continuous distribution and the samples should have the same sample size.<br />
+Missing values are silently omitted from x and y.<br />
+Exact and simulated p-values are available for the ${T_n^{(\ell)}}$ test. If exact ="NULL" (the default) the p-value is computed based on exact distribution when the sample size is less than 11. Otherwise, p-value is computed based on a Monte Carlo simulation. If exact ="TRUE", an exact p-value is computed. If exact="FALSE", a Monte Carlo simulation is performed to compute the p-value. It is recommended to calculate the p-value by a Monte Carlo simulation (use exact="FALSE"), as it takes too long to calculate the exact p-value when the sample size is greater than 10. <br />
+The probability mass function (pmf), cumulative density function (cdf) and quantile function of ${T_n^{(\ell)}}$ are also available in this package, and the above-mentioned conditions about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid for these functions.<br />
+Exact distribution of ${T_n^{(\ell)}}$ test is also computed under Lehman alternative.<br />
+Random number generator of ${T_n^{(\ell)}}$ test statistic are provided under null hypothesis in the library.
+
+
+## Examples
+```tnl.test``` function performs a nonparametric test for two sample test on vectors of data.
+```{r}
+library(tnlTEST)
+require(stats)
+ x=rnorm(7,2,0.5)
+ y=rnorm(7,0,1)
+ tnl.test(x,y,l=2)
+```
+
+```ptnl``` gives the distribution function of ${T_n^{(\ell)}}$ against the specified quantiles.
+```{r}
+library(tnlTEST)
+ ptnl(q=2,n=6,l=2,exact="NULL",trial = 100000)
+```
+
+```dtnl``` gives the density of ${T_n^{(\ell)}}$ against the specified quantiles.
+```{r}
+library(tnlTEST)
+ dtnl(k=3,n=7,l=2,exact="TRUE")
+```
+
+```qtnl``` gives the quantile function of ${T_n^{(\ell)}}$ against the specified probabilities.
+```{r}
+library(tnlTEST)
+ qtnl(.3,8,1,exact="FALSE",trial = 100000)
+```
+
+```rtnl``` generates random values from ${T_n^{(\ell)}}$.
+```{r}
+library(tnlTEST)
+ rtnl(N=15,n=7,l=2)
+```
+
+
+```dtnl.lehmann``` gives the density of ${T_n^{(\ell)}}$ under Lehmann alternatives. 
+```{r}
+library(tnlTEST)
+ dtnl.lehmann(l=2,n=6,gamma=0.8)
+```
+
+
+
+```ptnl.lehmann``` gives the  distribution function of ${T_n^{(\ell)}}$ under Lehmann alternatives.
+```{r}
+library(tnlTEST)
+ ptnl.lehmann(l=2,5,gamma=1.2)
+```
+
+
+
+
+
+
+
+
+
