@@ -1,6 +1,6 @@
 Package: tnlTEST
 Type: Package
-Title: Non-parametric Tests for the Two-Sample Problem
+Title: Non-Parametric Tests for the Two-Sample Problem
 Version: 0.1.0
 Authors@R: c(
      person(given="Ihab",
@@ -28,8 +28,8 @@ Authors@R: c(
            family="Nagaraja", 
            role =c("aut"))
            )
-Description: R functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons.
-Details: This package contains functions to calculate the density, distribution function, quantile function, random number generation, test statistic, density under Lehmann alternatives and distribution function under Lehmann alternatives.
+Description: R functions to perform the hypothesis tests for the two sample problem based on order statistics and power comparisons. This package contains functions to calculate the density, distribution function, 
+         quantile function, random number generation, test statistic, density under Lehmann alternatives and distribution function under Lehmann alternatives.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

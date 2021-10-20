@@ -217,12 +217,14 @@ dtnl<-function(k,n,l,exact="NULL",trial=100000){
 #'    }
 #' }
 #' @examples
-#' qtnl(.3,8,1,exact="FALSE")
+#' \dontrun{
+#'  qtnl(.3,4,1,exact="FALSE")
 #' #$method
 #' #[1] "Monte Carlo simulation"
 #' #
 #' #$quantile
-#' #[1] 3
+#' #[1] 2
+#' }
 qtnl<-function(p,n,l,exact="NULL",trial=100000){
   if (any(n < (2*l+1)))
     stop(paste("n must be > 2l", "\n",""))

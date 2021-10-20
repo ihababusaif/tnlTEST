@@ -128,12 +128,14 @@ dtnl(k=3,n=7,l=2,trial = 100000)
 #
 #$pmf
 #[1] 0.05710956
-qtnl(.3,8,1,exact="FALSE")
+\dontrun{
+ qtnl(.3,4,1,exact="FALSE")
 #$method
 #[1] "Monte Carlo simulation"
 #
 #$quantile
-#[1] 3
+#[1] 2
+}
 ##############
 rtnl(N=15,n=7,l=2)
 #[1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4
