@@ -8,7 +8,8 @@
 \alias{rtnl}
 \alias{dtnl.lehmann}
 \alias{ptnl.lehmann}
-\title{Non-parametric tests for the two-sample problem based on order statistics and power comparisons}
+\title{Non-parametric tests for the two-sample problem based
+on order statistics and power comparisons}
 \usage{
 tnl.test(x, y, l, exact = "NULL")
 
@@ -31,7 +32,9 @@ ptnl.lehmann(l, n, gamma)
 
 \item{l}{class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}}
 
-\item{exact}{the method that will be used. "NULL" or a logical indicating whether an exact should be computed. See ‘Details’ for the meaning of NULL.}
+\item{exact}{the method that will be used. "NULL" or a logical
+indicating whether an exact should be computed.
+See ‘Details’ for the meaning of NULL.}
 
 \item{n}{sample size.}
 
@@ -41,112 +44,151 @@ ptnl.lehmann(l, n, gamma)
 
 \item{p}{vector of probabilities.}
 
-\item{N}{number of observations. If length(N) > 1, the length is taken to be the number required.}
+\item{N}{number of observations. If length(N) > 1, the length is taken
+to be the number required.}
 
 \item{gamma}{parameter of Lehmann alternative}
 }
 \value{
-\subsection{\code{\link{tnl.test}} returns a list with the following components}{
+\code{\link{tnl.test}} returns a list with the following
+components
 \describe{
 \item{\code{statistic:}}{the value of the test statistic.}
 \item{\code{p.value:}}{the p-value of the test.}
 }
+
+\code{\link{ptnl}} returns a list with the following components
+\describe{
+\item{\code{method}:}{The method that was used (exact or simulation).
+See ‘Details’.}
+\item{\code{cdf}:}{distribution function of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+against the specified quantiles.}
 }
 
-\subsection{\code{\link{ptnl}} returns a list with the following components}{
+\code{\link{dtnl}} returns a list with the following components
 \describe{
-\item{\code{method}:}{The method that was used (exact or simulation). See ‘Details’.}
-\item{\code{cdf}:}{distribution function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.}
-}
+\item{\code{method}:}{The method that was used (exact or simulation).
+See ‘Details’.}
+\item{\code{pmf}:}{density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+against the specified quantiles.}
 }
 
-\subsection{\code{\link{dtnl}} returns a list with the following components}{
+\code{\link{qtnl}} returns a list with the following components
 \describe{
-\item{\code{method}:}{The method that was used (exact or simulation). See ‘Details’.}
-\item{\code{pmf}:}{density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.}
-}
-}
-
-\subsection{\code{\link{qtnl}} returns a list with the following components}{
-\describe{
-\item{\code{method}:}{The method that was used (exact or simulation). See ‘Details’.}
-\item{\code{quantile}:}{quantile function  against the specified probabilities.}
-}
+\item{\code{method}:}{The method that was used (exact or simulation).
+See ‘Details’.}
+\item{\code{quantile}:}{quantile function against the specified
+probabilities.}
 }
 
 \code{\link{rtnl}} return \emph{N} of the generated random values.
 
-\code{\link{dtnl.lehmann}} return vector of the density under Lehmann alternatives against the specified gamma.
+\code{\link{dtnl.lehmann}} return vector of the density under Lehmann
+alternatives against the specified gamma.
 
-\code{\link{ptnl.lehmann}} return vector of the distribution under Lehmann alternatives against the specified gamma.
+\code{\link{ptnl.lehmann}} return vector of the distribution under
+Lehmann alternatives against the specified gamma.
 }
 \description{
-\code{\link{tnl.test}} performs a nonparametric test for two sample test on vectors of data.
+\code{\link{tnl.test}} performs a nonparametric test for
+two sample test on vectors of data.
 
-\code{\link{ptnl}} gives the distribution function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+\code{\link{ptnl}} gives the distribution function of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
 
-\code{\link{dtnl}} gives the density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+\code{\link{dtnl}} gives the density of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
 
-\code{\link{qtnl}} gives the quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified probabilities.
+\code{\link{qtnl}} gives the quantile function of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified probabilities.
 
-\code{\link{rtnl}} generates random values from \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+\code{\link{rtnl}} generates random values from
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
 
-\code{\link{dtnl.lehmann}}  gives the density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+\code{\link{dtnl.lehmann}}  gives the density of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
 
-\code{\link{ptnl.lehmann}}  gives the  distribution function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+\code{\link{ptnl.lehmann}}  gives the  distribution function of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
 }
 \details{
-A non-parametric two-sample test is performed for testing null hypothesis \loadmathjax \mjeqn{H_0: F = G}{ascii} against the alternative hypothesis \loadmathjax \mjeqn{H_1:F \not= G}{ascii}. The assumptions of the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}  test are that both samples should come from a continuous distribution and the samples should have the same sample size.\cr
+A non-parametric two-sample test is performed for testing null
+hypothesis \loadmathjax \mjeqn{H_0: F = G}{ascii} against the alternative
+hypothesis \loadmathjax \mjeqn{H_1:F \not= G}{ascii}. The assumptions
+of the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}  test are that both
+samples should come from a continuous distribution and the samples
+should have the same sample size.\cr
 Missing values are silently omitted from x and y.\cr
-Exact and simulated p-values are available for the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test. If exact ="NULL" (the default) the p-value is computed based on exact distribution when the sample size is less than 11. Otherwise, p-value is computed based on a Monte Carlo simulation. If exact ="TRUE", an exact p-value is computed. If exact="FALSE", a Monte Carlo simulation is performed to compute the p-value. It is recommended to calculate the p-value by a Monte Carlo simulation (use exact="FALSE"), as it takes too long to calculate the exact p-value when the sample size is greater than 10. \cr
-The probability mass function (pmf), cumulative density function (cdf) and quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} are also available in this package, and the above-mentioned conditions about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid for these functions.\cr
-Exact distribution of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test is also computed under Lehman alternative.\cr
-Random number generator of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test statistic are provided under null hypothesis in the library.
+Exact and simulated p-values are available for the
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test.
+If exact ="NULL" (the default) the p-value is computed based
+on exact distribution when the sample size is less than 11.
+Otherwise, p-value is computed based on a Monte Carlo simulation.
+If exact ="TRUE", an exact p-value is computed. If exact="FALSE"
+, a Monte Carlo simulation is performed to compute the p-value.
+It is recommended to calculate the p-value by a Monte Carlo simulation
+(use exact="FALSE"), as it takes too long to calculate the exact
+p-value when the sample size is greater than 10. \cr
+The probability mass function (pmf), cumulative density function (cdf)
+and quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} are
+also available in this package, and the above-mentioned conditions
+about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid
+for these functions.\cr
+Exact distribution of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test is
+also computed under Lehman alternative.\cr
+Random number generator of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test
+statistic are provided under null hypothesis in the library.
 }
 \examples{
 require(stats)
-x=rnorm(7,2,0.5)
-y=rnorm(7,0,1)
-tnl.test(x,y,l=2)
-#$statistic
-#[1] 2
+x <- rnorm(7, 2, 0.5)
+y <- rnorm(7, 0, 1)
+tnl.test(x, y, l = 2)
+# $statistic
+# [1] 2
 #
-#$p.value
-#[1] 0.02447552
+# $p.value
+# [1] 0.02447552
 ##############
-ptnl(q=2,n=6,l=2,trial = 100000)
-#$method
-#[1] "exact"
+ptnl(q = 2, n = 6, l = 2, trial = 100000)
+# $method
+# [1] "exact"
 #
-#$cdf
-#[1] 0.03030303
-
+# $cdf
+# [1] 0.03030303
 ##############
-dtnl(k=3,n=7,l=2,trial = 100000)
-#$method
-#[1] "exact"
+dtnl(k = 3, n = 7, l = 2, trial = 100000)
+# $method
+# [1] "exact"
 #
-#$pmf
-#[1] 0.05710956
+# $pmf
+# [1] 0.05710956
 \dontrun{
- qtnl(.3,4,1,exact="FALSE")
-#$method
-#[1] "Monte Carlo simulation"
+qtnl(.3, 4, 1, exact = "FALSE")
+# $method
+# [1] "Monte Carlo simulation"
 #
-#$quantile
-#[1] 2
+# $quantile
+# [1] 2
 }
 ##############
-rtnl(N=15,n=7,l=2)
-#[1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4
+rtnl(N = 15, n = 7, l = 2)
+# [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4
 ##############
-dtnl.lehmann(l=2,n=6,gamma=0.8)
-#[1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764
+dtnl.lehmann(l = 2, n = 6, gamma = 0.8)
+# [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764
 ##############
-ptnl.lehmann(l=2,5,gamma=1.2)
-#[1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
+ptnl.lehmann(l = 2, 5, gamma = 1.2)
+# [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
 }
 \references{
-Karakaya K. et al. (2021). \emph{A Class of Non-parametric Tests for the Two-Sample Problem based on Order Statistics and Power Comparisons}. Submitted paper.\cr
-Aliev F. et al. (2021). \emph{A Nonparametric Test for the Two-Sample Problem based on Order Statistics}. Submitted paper.
+Karakaya K. et al. (2021).
+\emph{A Class of Non-parametric Tests for the Two-Sample Problem}
+\emph{based on Order Statistics and Power Comparisons}
+. Submitted paper.\cr
+Aliev F. et al. (2021).
+\emph{A Nonparametric Test for the}
+\emph{Two-Sample Problem based on Order Statistics}.
+Submitted paper.
 }
