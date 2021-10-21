@@ -8,6 +8,8 @@
 [![Codecov test
 coverage](https://codecov.io/gh/ihababusaif/tnlTEST/branch/master/graph/badge.svg)](https://codecov.io/gh/ihababusaif/tnlTEST?branch=master)
 [![R-CMD-check](https://github.com/ihababusaif/tnlTEST/workflows/R-CMD-check/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions)
+[![pkgdown](https://github.com/ihababusaif/tnlTEST/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions/workflows/pkgdown.yaml)
+[![test-coverage](https://github.com/ihababusaif/tnlTEST/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions/workflows/test-coverage.yaml)
 <!-- badges: end -->
 
 The goal of tnlTEST is to provide functions to perform the hypothesis
@@ -111,7 +113,7 @@ library(tnlTEST)
 ``` r
 library(tnlTEST)
  rtnl(N=15,n=7,l=2)
-#>  [1] 7 7 6 6 6 5 3 6 5 7 7 6 5 6 4
+#>  [1] 5 6 7 6 5 4 4 6 7 4 6 5 6 7 6
 ```
 
 `dtnl.lehmann` gives the density of *T*<sub>*n*</sub><sup>(ℓ)</sup>
