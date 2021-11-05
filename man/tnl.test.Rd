@@ -118,8 +118,8 @@ two sample test on vectors of data.
 \code{\link{ptnl.lehmann}}  gives the  distribution function of
 \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
 
-\code{\link{tnl_mean}}  gives an Expression for
-\loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under
+\code{\link{tnl_mean}}  gives an expression for
+\loadmathjax \mjeqn{E(T_n^{(\ell)})}{ascii} under
 \loadmathjax \mjeqn{H_0: F = G}{ascii}.
 }
 \details{

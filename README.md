@@ -113,7 +113,7 @@ library(tnlTEST)
 ``` r
 library(tnlTEST)
  rtnl(N=15,n=7,l=2)
-#>  [1] 4 3 5 4 5 6 7 5 7 6 7 6 7 4 3
+#>  [1] 5 6 6 5 7 3 6 7 6 6 7 5 7 7 7
 ```
 
 `dtnl.lehmann` gives the density of *T*<sub>*n*</sub><sup>(ℓ)</sup>
@@ -134,7 +134,8 @@ library(tnlTEST)
 #> [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
 ```
 
-`mean.tnl` gives an Expression for under .
+`mean.tnl` gives an expression for *E*(*T*<sub>*n*</sub><sup>(ℓ)</sup>)
+under *H*<sub>0</sub> : *F* = *G*.
 
 ``` r
 library(tnlTEST)

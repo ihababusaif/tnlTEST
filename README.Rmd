@@ -92,7 +92,7 @@ library(tnlTEST)
 
 
 
-```mean.tnl``` gives an Expression for \loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under \loadmathjax \mjeqn{H_0: F = G}{ascii}.
+```mean.tnl``` gives an expression for $E({T_n^{(\ell)}})$ under ${H_0: F = G}$.
 ```{r}
 library(tnlTEST)
 require(base)

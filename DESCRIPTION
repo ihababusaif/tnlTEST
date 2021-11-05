@@ -22,8 +22,8 @@ License: GPL-3
 URL: https://github.com/ihababusaif/tnlTEST
 BugReports: https://github.com/ihababusaif/tnlTEST/issues
 Imports: 
-    mathjaxr,
     partitions,
+    mathjaxr,
     plyr
 Suggests: 
     covr,

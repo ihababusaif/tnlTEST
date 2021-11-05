@@ -533,8 +533,8 @@ ptnl.lehmann <- function(l, n, gamma) {
 #' @rdname tnl.test
 #' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
 #' @param n sample size.
-#' @description \code{\link{tnl_mean}}  gives an Expression for
-#' \loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under
+#' @description \code{\link{tnl_mean}}  gives an expression for
+#' \loadmathjax \mjeqn{E(T_n^{(\ell)})}{ascii} under
 #'    \loadmathjax \mjeqn{H_0: F = G}{ascii}.
 #' @return \code{\link{tnl_mean}} return the mean of
 #'          \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
