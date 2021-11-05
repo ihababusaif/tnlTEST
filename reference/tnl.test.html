@@ -61,7 +61,12 @@ dtnl.lehmann  gives the density of
  \(T_n^{(\ell)}\) under Lehmann alternatives.
 ptnl.lehmann  gives the  distribution function of
 
- \(T_n^{(\ell)}\) under Lehmann alternatives." />
+ \(T_n^{(\ell)}\) under Lehmann alternatives.
+tnl_mean  gives an Expression for
+
+ \(E(T_n^{(\ell))}\) under
+
+ \(H_0: F = G\)." />
 
 
 
@@ -171,6 +176,11 @@ two sample test on vectors of data.</p>
 <p><code>ptnl.lehmann</code>  gives the  distribution function of
 <script id="MathJax-script" async src="../../mathjaxr/doc/mathjax/es5/tex-chtml-full.js"></script>
  \(T_n^{(\ell)}\) under Lehmann alternatives.</p>
+<p><code>tnl_mean</code>  gives an Expression for
+<script id="MathJax-script" async src="../../mathjaxr/doc/mathjax/es5/tex-chtml-full.js"></script>
+ \(E(T_n^{(\ell))}\) under
+<script id="MathJax-script" async src="../../mathjaxr/doc/mathjax/es5/tex-chtml-full.js"></script>
+ \(H_0: F = G\).</p>
     </div>
 
     <pre class="usage"><span class='fu'>tnl.test</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>l</span>, exact <span class='op'>=</span> <span class='st'>"NULL"</span><span class='op'>)</span>
@@ -185,7 +195,9 @@ two sample test on vectors of data.</p>
 
 <span class='fu'>dtnl.lehmann</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>n</span>, <span class='va'>gamma</span><span class='op'>)</span>
 
-<span class='fu'>ptnl.lehmann</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>n</span>, <span class='va'>gamma</span><span class='op'>)</span></pre>
+<span class='fu'>ptnl.lehmann</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>n</span>, <span class='va'>gamma</span><span class='op'>)</span>
+
+<span class='fu'>tnl_mean</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>l</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -277,6 +289,9 @@ probabilities.</p></dd>
 alternatives against the specified gamma.</p>
 <p><code>ptnl.lehmann</code> return vector of the distribution under
 Lehmann alternatives against the specified gamma.</p>
+<p><code>tnl_mean</code> return the mean of
+<script id="MathJax-script" async src="../../mathjaxr/doc/mathjax/es5/tex-chtml-full.js"></script>
+ \(T_n^{(\ell)}\).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A non-parametric two-sample test is performed for testing null
@@ -324,62 +339,73 @@ Aliev F. et al. (2021).
 Submitted paper.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>7</span>, <span class='fl'>2</span>, <span class='fl'>0.5</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>7</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
-<span class='fu'>tnl.test</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $statistic
-#&gt; [1] 2
-#&gt; 
-#&gt; $p.value
-#&gt; [1] 0.02447552
-#&gt; </div><div class='input'><span class='co'># $statistic</span>
-<span class='co'># [1] 2</span>
-<span class='co'>#</span>
-<span class='co'># $p.value</span>
-<span class='co'># [1] 0.02447552</span>
-<span class='co'>##############</span>
-<span class='fu'>ptnl</span><span class='op'>(</span>q <span class='op'>=</span> <span class='fl'>2</span>, n <span class='op'>=</span> <span class='fl'>6</span>, l <span class='op'>=</span> <span class='fl'>2</span>, trial <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $method
-#&gt; [1] "exact"
-#&gt; 
-#&gt; $cdf
-#&gt; [1] 0.03030303
-#&gt; </div><div class='input'><span class='co'># $method</span>
-<span class='co'># [1] "exact"</span>
-<span class='co'>#</span>
-<span class='co'># $cdf</span>
-<span class='co'># [1] 0.03030303</span>
-<span class='co'>##############</span>
-<span class='fu'>dtnl</span><span class='op'>(</span>k <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span>, trial <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $method
-#&gt; [1] "exact"
-#&gt; 
-#&gt; $pmf
-#&gt; [1] 0.05710956
-#&gt; </div><div class='input'><span class='co'># $method</span>
-<span class='co'># [1] "exact"</span>
-<span class='co'>#</span>
-<span class='co'># $pmf</span>
-<span class='co'># [1] 0.05710956</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='fu'>qtnl</span><span class='op'>(</span><span class='fl'>.3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, exact <span class='op'>=</span> <span class='st'>"FALSE"</span><span class='op'>)</span>
-<span class='co'># $method</span>
-<span class='co'># [1] "Monte Carlo simulation"</span>
-<span class='co'>#</span>
-<span class='co'># $quantile</span>
-<span class='co'># [1] 2</span>
-<span class='op'>}</span>
-<span class='co'>##############</span>
-<span class='fu'>rtnl</span><span class='op'>(</span>N <span class='op'>=</span> <span class='fl'>15</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] 7 5 6 6 7 3 6 6 7 6 6 4 7 3 7</div><div class='input'><span class='co'># [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4</span>
-<span class='co'>##############</span>
-<span class='fu'>dtnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, n <span class='op'>=</span> <span class='fl'>6</span>, gamma <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</div><div class='input'><span class='co'># [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span>
-<span class='co'>##############</span>
-<span class='fu'>ptnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, <span class='fl'>5</span>, gamma <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</div><div class='input'><span class='co'># [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>stats</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>7</span>, <span class='fl'>2</span>, <span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='fl'>7</span>, <span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>tnl.test</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $statistic</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $p.value</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.02447552</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># $statistic</span></span>
+<span class='r-in'><span class='co'># [1] 2</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># $p.value</span></span>
+<span class='r-in'><span class='co'># [1] 0.02447552</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>ptnl</span><span class='op'>(</span>q <span class='op'>=</span> <span class='fl'>2</span>, n <span class='op'>=</span> <span class='fl'>6</span>, l <span class='op'>=</span> <span class='fl'>2</span>, trial <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $method</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "exact"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $cdf</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.03030303</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># $method</span></span>
+<span class='r-in'><span class='co'># [1] "exact"</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># $cdf</span></span>
+<span class='r-in'><span class='co'># [1] 0.03030303</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>dtnl</span><span class='op'>(</span>k <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span>, trial <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $method</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "exact"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $pmf</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.05710956</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='co'># $method</span></span>
+<span class='r-in'><span class='co'># [1] "exact"</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># $pmf</span></span>
+<span class='r-in'><span class='co'># [1] 0.05710956</span></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'><span class='fu'>qtnl</span><span class='op'>(</span><span class='fl'>.3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, exact <span class='op'>=</span> <span class='st'>"FALSE"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># $method</span></span>
+<span class='r-in'><span class='co'># [1] "Monte Carlo simulation"</span></span>
+<span class='r-in'><span class='co'>#</span></span>
+<span class='r-in'><span class='co'># $quantile</span></span>
+<span class='r-in'><span class='co'># [1] 2</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>rtnl</span><span class='op'>(</span>N <span class='op'>=</span> <span class='fl'>15</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] 7 5 6 6 7 3 6 6 7 6 6 4 7 3 7</span>
+<span class='r-in'><span class='co'># [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>dtnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, n <span class='op'>=</span> <span class='fl'>6</span>, gamma <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span>
+<span class='r-in'><span class='co'># [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>ptnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, <span class='fl'>5</span>, gamma <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span>
+<span class='r-in'><span class='co'># [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>base</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>tnl_mean</span><span class='op'>(</span><span class='fl'>11</span>, <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 8.058115</span>
+<span class='r-in'><span class='co'># [1] 8.058115</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
