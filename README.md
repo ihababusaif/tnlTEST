@@ -113,7 +113,7 @@ library(tnlTEST)
 ``` r
 library(tnlTEST)
  rtnl(N=15,n=7,l=2)
-#>  [1] 5 6 7 6 5 4 4 6 7 4 6 5 6 7 6
+#>  [1] 4 3 5 4 5 6 7 5 7 6 7 6 7 4 3
 ```
 
 `dtnl.lehmann` gives the density of *T*<sub>*n*</sub><sup>(ℓ)</sup>
@@ -133,3 +133,24 @@ library(tnlTEST)
  ptnl.lehmann(l=2,5,gamma=1.2)
 #> [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
 ```
+
+`mean.tnl` gives an Expression for under .
+
+``` r
+library(tnlTEST)
+require(base)
+ tnl_mean(11,2)
+#> [1] 8.058115
+```
+
+## Corresponding Author
+
+Department of Statistics, Faculty of Science, Selcuk University, 42250,
+Konya, Turkey <br /> Email:<coskun@selcuk.edu.tr>
+
+## References
+
+Karakaya K. et al. (2021). *A Class of Non-parametric Tests for the
+Two-Sample Problem based on Order Statistics and Power Comparisons*.
+Submitted paper.<br /> Aliev F. et al. (2021). *A Nonparametric Test for
+the Two-Sample Problem based on Order Statistics*. Submitted paper.

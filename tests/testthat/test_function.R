@@ -25,6 +25,7 @@ test_that("functions returns a list", {
   X <- c(x, 0.975, 1.144, 0.572, -0.532)
   Y <- c(y, 1.007, -2.023, 1.468, 1.396)
   expect_type(tnl.test(X, Y, l = 2), "list")
+  expect_type(tnl_mean(10, 2), "double")
 })
 ## Test whether the output return the right number
 test_that("functions returns the right output", {
@@ -45,6 +46,7 @@ test_that("functions returns a list with the specified length", {
   expect_length(ptnl(2, 11, 1)$cdf, 1)
   expect_length(dtnl(2, 11, 1)$pmf, 1)
   expect_length(qtnl(.2, 7, 1)$quantile, 1)
+  expect_length(tnl_mean(13, 3), 1)
 })
 ## Test whether the output is a vector with the expected size
 test_that("functions returns a  vector with the expected size", {
@@ -91,7 +93,8 @@ test_that("functions returns errors", {
   expect_error(qtnl(1.3, 8, 1), "p must be between 0 and 1")
   expect_error(dtnl.lehmann(3, 5, 1.2), "n must be > 2l")
   expect_error(ptnl.lehmann(3, 5, 1.2), "n must be > 2l")
-  expect_error(tnl.test(x, c(y, 2.1), l = 2), "The length of x and y must be equal")
+  expect_error(tnl.test(x, c(y, 2.1), l = 2),
+               "The length of x and y must be equal")
   expect_warning(
     tnl.test(c(x, NA), c(NA, y), l = 2),
     "Since the data should not contain missing values,

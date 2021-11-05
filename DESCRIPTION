@@ -4,7 +4,7 @@ Title: Non-Parametric Tests for the Two-Sample Problem
 Version: 0.1.0
 Authors@R: c(
     person("Ihab", "Abusaif", , "censtat@gmail.com", role = c("cre", "aut")),
-    person("Sümeyra", "Sert", , "sumeyrasert1@gmail.com", role = c("aut", "ctb")),
+    person("Sümeyra", "Sert", , "sumeyra.sert@selcuk.edu.tr", role = c("aut", "ctb")),
     person("Coşkun", "Kuş", , "coskun@selcuk.edu.tr", role = c("aut", "ctb"),
            comment = "https://www.selcuk.edu.tr/Personel/coskun"),
     person("Kadir", "Karakaya", , "kkarakaya@selcuk.edu.tr", role = c("aut", "ctb"),
@@ -24,8 +24,7 @@ BugReports: https://github.com/ihababusaif/tnlTEST/issues
 Imports: 
     mathjaxr,
     partitions,
-    plyr,
-    rlang (>= 0.1.2)
+    plyr
 Suggests: 
     covr,
     knitr,

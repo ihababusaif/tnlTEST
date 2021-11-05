@@ -8,6 +8,7 @@
 \alias{rtnl}
 \alias{dtnl.lehmann}
 \alias{ptnl.lehmann}
+\alias{tnl_mean}
 \title{Non-parametric tests for the two-sample problem based
 on order statistics and power comparisons}
 \usage{
@@ -24,6 +25,8 @@ rtnl(N, n, l)
 dtnl.lehmann(l, n, gamma)
 
 ptnl.lehmann(l, n, gamma)
+
+tnl_mean(n, l)
 }
 \arguments{
 \item{x}{the first (non-empty) numeric vector of data values.}
@@ -89,6 +92,9 @@ alternatives against the specified gamma.
 
 \code{\link{ptnl.lehmann}} return vector of the distribution under
 Lehmann alternatives against the specified gamma.
+
+\code{\link{tnl_mean}} return the mean of
+\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
 }
 \description{
 \code{\link{tnl.test}} performs a nonparametric test for
@@ -111,6 +117,10 @@ two sample test on vectors of data.
 
 \code{\link{ptnl.lehmann}}  gives the  distribution function of
 \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+
+\code{\link{tnl_mean}}  gives an Expression for
+\loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under
+\loadmathjax \mjeqn{H_0: F = G}{ascii}.
 }
 \details{
 A non-parametric two-sample test is performed for testing null
@@ -181,6 +191,10 @@ dtnl.lehmann(l = 2, n = 6, gamma = 0.8)
 ##############
 ptnl.lehmann(l = 2, 5, gamma = 1.2)
 # [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
+##############
+require(base)
+tnl_mean(11, 2)
+# [1] 8.058115
 }
 \references{
 Karakaya K. et al. (2021).

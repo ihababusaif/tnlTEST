@@ -89,6 +89,18 @@ library(tnlTEST)
 
 
 
+```mean.tnl``` gives an Expression for \loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under \loadmathjax \mjeqn{H_0: F = G}{ascii}.
+```{r}
+library(tnlTEST)
+require(base)
+ tnl_mean(11,2)
+```
+
+## Corresponding Author
+Department of Statistics, Faculty of Science, Selcuk University, 42250, Konya, Turkey  <br />
+Email:coskun@selcuk.edu.tr
+
+
 ## References 
 Karakaya K. et al. (2021). *A Class of Non-parametric Tests for the Two-Sample Problem based on Order Statistics and Power Comparisons*. Submitted paper.<br />
 Aliev F. et al. (2021). *A Nonparametric Test for the Two-Sample Problem based on Order Statistics*. Submitted paper.

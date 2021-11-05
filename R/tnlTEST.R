@@ -1,6 +1,4 @@
-
-#' @importFrom partitions compositions
-
+#'@import mathjaxr
 tnl <- function(n, l) {
   if (any(n < (2 * l + 1))) {
     stop(paste("n must be > 2l", "\n", ""))
@@ -22,7 +20,8 @@ tnl <- function(n, l) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
+            else zz2[i] <- 0
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -40,8 +39,8 @@ tnl <- function(n, l) {
   return(result)
 }
 
-#' @importFrom plyr count
-#' @importFrom stats rnorm
+
+
 tnl.sim <- function(n, l, trial = 100000) {
   if (any(n < (2 * l + 1))) {
     stop(paste("n must be > 2l", "\n", ""))
@@ -82,7 +81,6 @@ tnl.sim <- function(n, l, trial = 100000) {
 #' Non-parametric tests for the two-sample problem based
 #' on order statistics and power comparisons
 #' @export
-#' @import mathjaxr
 #' @rdname tnl.test
 #' @param x the first (non-empty) numeric vector of data values.
 #' @param y the second (non-empty) numeric vector of data values.
@@ -377,7 +375,6 @@ qtnl <- function(p, n, l, exact = "NULL", trial = 100000) {
 #' @description \code{\link{rtnl}} generates random values from
 #'               \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
 #' @return \code{\link{rtnl}} return *N* of the generated random values.
-#' @importFrom stats rnorm
 #' @examples
 #' ##############
 #' rtnl(N = 15, n = 7, l = 2)
@@ -415,7 +412,6 @@ rtnl <- function(N, n, l) {
 #' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
 #' @param n sample size.
 #' @param gamma parameter of Lehmann alternative
-#' @importFrom partitions compositions
 #' @description \code{\link{dtnl.lehmann}}  gives the density of
 #'       \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
 #' @return \code{\link{dtnl.lehmann}} return vector of the density under Lehmann
@@ -445,7 +441,8 @@ dtnl.lehmann <- function(l, n, gamma) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
+           else zz2[i] <- 0
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -453,7 +450,8 @@ dtnl.lehmann <- function(l, n, gamma) {
       if (sum(zz2) == v) {
         plam <- 1
         for (jj in 1:(n - 1)) {
-          plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) / gamma(sum(m[1:(jj + 1)])
+          plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) /
+                   gamma(sum(m[1:(jj + 1)])
           + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(m) + n * gamma) / gamma(n + n * gamma + 1)
@@ -474,7 +472,6 @@ dtnl.lehmann <- function(l, n, gamma) {
 #' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
 #' @param n sample size.
 #' @param gamma parameter of Lehmann alternative
-#' @importFrom partitions compositions
 #' @description \code{\link{ptnl.lehmann}}  gives the  distribution function of
 #' \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
 #' @return \code{\link{ptnl.lehmann}} return vector of the distribution under
@@ -504,7 +501,8 @@ ptnl.lehmann <- function(l, n, gamma) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
+        else zz2[i] <- 0
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -512,7 +510,8 @@ ptnl.lehmann <- function(l, n, gamma) {
       if (sum(zz2) == v) {
         plam <- 1
         for (jj in 1:(n - 1)) {
-          plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) / gamma(sum(m[1:(jj + 1)])
+          plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) /
+                   gamma(sum(m[1:(jj + 1)])
           + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(m) + n * gamma) / gamma(n + n * gamma + 1)
@@ -528,4 +527,40 @@ ptnl.lehmann <- function(l, n, gamma) {
     }
   }
   return(res)
+}
+#' Function that calculates moments
+#' @export
+#' @rdname tnl.test
+#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param n sample size.
+#' @description \code{\link{tnl_mean}}  gives an Expression for
+#' \loadmathjax \mjeqn{E(T_n^{(\ell))}}{ascii} under
+#'    \loadmathjax \mjeqn{H_0: F = G}{ascii}.
+#' @return \code{\link{tnl_mean}} return the mean of
+#'          \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+#' @examples
+#' ##############
+#' require(base)
+#' tnl_mean(11, 2)
+#' # [1] 8.058115
+tnl_mean <- function(n, l) {
+  a.ki <- function(n, k, i) {
+    (choose((i + k - 1), (i - 1)) *
+       choose((2 * n - i - k), (n - i))) /
+        choose((2 * n), n)
+  }
+  pi <- NULL
+  for (i in 1:10) {
+    p <- 0
+    for (k in max(0, (i - l)):(i + l - 1)) {
+      p <- p + a.ki(n, k, i)
+    }
+    pi[i] <- p
+  }
+  if ((n %% 2) == 0) {
+    m <- 2 * sum(pi[1:(n / 2)])
+  } else {
+    m <- 2 * sum(pi[1:((n - 1) / 2)]) + pi[((n - 1) / 2) + 1]
+  }
+  return(m)
 }
