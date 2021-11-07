@@ -33,7 +33,8 @@ tnl_mean(n, l)
 
 \item{y}{the second (non-empty) numeric vector of data values.}
 
-\item{l}{class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}}
+\item{l}{class parameter of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}}
 
 \item{exact}{the method that will be used. "NULL" or a logical
 indicating whether an exact should be computed.
@@ -65,7 +66,7 @@ components
 \item{\code{method}:}{The method that was used (exact or simulation).
 See ‘Details’.}
 \item{\code{cdf}:}{distribution function of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 against the specified quantiles.}
 }
 
@@ -73,7 +74,8 @@ against the specified quantiles.}
 \describe{
 \item{\code{method}:}{The method that was used (exact or simulation).
 See ‘Details’.}
-\item{\code{pmf}:}{density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+\item{\code{pmf}:}{density of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 against the specified quantiles.}
 }
 
@@ -94,44 +96,56 @@ alternatives against the specified gamma.
 Lehmann alternatives against the specified gamma.
 
 \code{\link{tnl_mean}} return the mean of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 }
 \description{
 \code{\link{tnl.test}} performs a nonparametric test for
 two sample test on vectors of data.
 
 \code{\link{ptnl}} gives the distribution function of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+against the specified quantiles.
 
 \code{\link{dtnl}} gives the density of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+against the specified quantiles.
 
 \code{\link{qtnl}} gives the quantile function of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified probabilities.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+against the specified probabilities.
 
 \code{\link{rtnl}} generates random values from
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 
 \code{\link{dtnl.lehmann}}  gives the density of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+under Lehmann alternatives.
 
 \code{\link{ptnl.lehmann}}  gives the  distribution function of
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+under Lehmann alternatives.
 
 \code{\link{tnl_mean}}  gives an expression for
-\loadmathjax \mjeqn{E(T_n^{(\ell)})}{ascii} under
-\loadmathjax \mjeqn{H_0: F = G}{ascii}.
+\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
+under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
 }
 \details{
 A non-parametric two-sample test is performed for testing null
-hypothesis \loadmathjax \mjeqn{H_0: F = G}{ascii} against the alternative
-hypothesis \loadmathjax \mjeqn{H_1:F \not= G}{ascii}. The assumptions
-of the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}  test are that both
+hypothesis
+\ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}
+against the alternative
+hypothesis
+\ifelse{html}{\out{H<sub>1</sub>:F &#8800 G}}{\eqn{H_1:F\not= G}}.
+The assumptions
+of the
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+test are that both
 samples should come from a continuous distribution and the samples
 should have the same sample size.\cr
 Missing values are silently omitted from x and y.\cr
 Exact and simulated p-values are available for the
-\loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test.
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+test.
 If exact ="NULL" (the default) the p-value is computed based
 on exact distribution when the sample size is less than 11.
 Otherwise, p-value is computed based on a Monte Carlo simulation.
@@ -141,14 +155,17 @@ It is recommended to calculate the p-value by a Monte Carlo simulation
 (use exact="FALSE"), as it takes too long to calculate the exact
 p-value when the sample size is greater than 10. \cr
 The probability mass function (pmf), cumulative density function (cdf)
-and quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} are
-also available in this package, and the above-mentioned conditions
+and quantile function of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+are also available in this package, and the above-mentioned conditions
 about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid
 for these functions.\cr
-Exact distribution of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test is
-also computed under Lehman alternative.\cr
-Random number generator of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test
-statistic are provided under null hypothesis in the library.
+Exact distribution of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+test is also computed under Lehman alternative.\cr
+Random number generator of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+test statistic are provided under null hypothesis in the library.
 }
 \examples{
 require(stats)

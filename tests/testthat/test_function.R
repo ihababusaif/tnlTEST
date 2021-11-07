@@ -93,11 +93,17 @@ test_that("functions returns errors", {
   expect_error(qtnl(1.3, 8, 1), "p must be between 0 and 1")
   expect_error(dtnl.lehmann(3, 5, 1.2), "n must be > 2l")
   expect_error(ptnl.lehmann(3, 5, 1.2), "n must be > 2l")
-  expect_error(tnl.test(x, c(y, 2.1), l = 2),
-               "The length of x and y must be equal")
+  expect_error(
+    tnl.test(x, c(y, 2.1), l = 2),
+    "The length of x and y must be equal"
+  )
   expect_warning(
     tnl.test(c(x, NA), c(NA, y), l = 2),
     "Since the data should not contain missing values,
 we exclude the missing values from the data"
   )
+  expect_warning(
+    tnl_mean(5, 3), "n must be > 2l"
+  )
+  expect_error(rtnl(20, 5, 3), "n must be > 2l")
 })

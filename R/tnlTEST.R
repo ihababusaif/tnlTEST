@@ -1,4 +1,3 @@
-#'@import mathjaxr
 tnl <- function(n, l) {
   if (any(n < (2 * l + 1))) {
     stop(paste("n must be > 2l", "\n", ""))
@@ -20,8 +19,11 @@ tnl <- function(n, l) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
-            else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) {
+          zz2[i] <- 1
+        } else {
+          zz2[i] <- 0
+        }
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -38,8 +40,6 @@ tnl <- function(n, l) {
   result <- list(method = "exact", pmf = prob, cdf = res)
   return(result)
 }
-
-
 
 tnl.sim <- function(n, l, trial = 100000) {
   if (any(n < (2 * l + 1))) {
@@ -77,6 +77,11 @@ tnl.sim <- function(n, l, trial = 100000) {
   return(result)
 }
 
+a.ki <- function(n, k, i) {
+  (choose((i + k - 1), (i - 1)) *
+     choose((2 * n - i - k), (n - i))) /
+    choose((2 * n), n)
+}
 
 #' Non-parametric tests for the two-sample problem based
 #' on order statistics and power comparisons
@@ -84,7 +89,8 @@ tnl.sim <- function(n, l, trial = 100000) {
 #' @rdname tnl.test
 #' @param x the first (non-empty) numeric vector of data values.
 #' @param y the second (non-empty) numeric vector of data values.
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @param exact the method that will be used.
 #' "NULL" or a logical indicating whether an exact should be computed.
 #' See ‘Details’ for the meaning of NULL.
@@ -98,14 +104,21 @@ tnl.sim <- function(n, l, trial = 100000) {
 #'    }
 #'
 #' @details A non-parametric two-sample test is performed for testing null
-#'    hypothesis \loadmathjax \mjeqn{H_0: F = G}{ascii} against the alternative
-#'       hypothesis \loadmathjax \mjeqn{H_1:F \not= G}{ascii}. The assumptions
-#'          of the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}  test are that both
+#'    hypothesis
+#'    \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}
+#'    against the alternative
+#'       hypothesis
+#'       \ifelse{html}{\out{H<sub>1</sub>:F &#8800 G}}{\eqn{H_1:F\not= G}}.
+#'        The assumptions
+#'          of the
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'      test are that both
 #'          samples should come from a continuous distribution and the samples
 #'          should have the same sample size.\cr
 #'      Missing values are silently omitted from x and y.\cr
 #'      Exact and simulated p-values are available for the
-#'      \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test.
+#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'       test.
 #'      If exact ="NULL" (the default) the p-value is computed based
 #'      on exact distribution when the sample size is less than 11.
 #'      Otherwise, p-value is computed based on a Monte Carlo simulation.
@@ -115,14 +128,17 @@ tnl.sim <- function(n, l, trial = 100000) {
 #'      (use exact="FALSE"), as it takes too long to calculate the exact
 #'      p-value when the sample size is greater than 10. \cr
 #'      The probability mass function (pmf), cumulative density function (cdf)
-#'       and quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} are
-#'       also available in this package, and the above-mentioned conditions
+#'       and quantile function of
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'     are also available in this package, and the above-mentioned conditions
 #'        about exact ="NULL", exact ="TRUE" and exact="FALSE" is also valid
 #'        for these functions.\cr
-#'      Exact distribution of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test is
-#'      also computed under Lehman alternative.\cr
-#'      Random number generator of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} test
-#'      statistic are provided under null hypothesis in the library.
+#'      Exact distribution of
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'       test is also computed under Lehman alternative.\cr
+#'      Random number generator of
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'       test statistic are provided under null hypothesis in the library.
 #' @references Karakaya K. et al. (2021).
 #' *A Class of Non-parametric Tests for the Two-Sample Problem*
 #' *based on Order Statistics and Power Comparisons*
@@ -187,25 +203,28 @@ we exclude the missing values from the data"
 }
 
 
-#' Distribution function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' Distribution function of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' against the specified quantiles
 #' @export
 #' @rdname tnl.test
 #' @param k,q vector of quantiles.
 #' @param n sample size.
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param exact the method that will be used. "NULL" or a logical indicating
 #'         whether an exact should be computed.
 #'         See ‘Details’ for the meaning of NULL.
 #' @param trial number of trials for simulation.
 #' @description  \code{\link{ptnl}} gives the distribution function of
-#' \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'  against the specified quantiles.
 #' @return \code{\link{ptnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
 #'                  See ‘Details’.}
 #'      \item{\code{cdf}:}{distribution function of
-#'            \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #'                    against the specified quantiles.}
 #'    }
 #'
@@ -244,24 +263,28 @@ ptnl <- function(q, n, l, exact = "NULL", trial = 100000) {
   return(result)
 }
 
-#' Density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' Density of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' against the specified quantiles
 #' @export
 #' @rdname tnl.test
 #' @param k,q vector of quantiles.
 #' @param n sample size.
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param trial number of trials for simulation.
 #' @param exact the method that will be used.
 #' "NULL" or a logical indicating whether
 #' an exact should be computed. See ‘Details’ for the meaning of NULL.
 #' @description  \code{\link{dtnl}} gives the density of
-#' \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified quantiles.
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#' against the specified quantiles.
 #' @return \code{\link{dtnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
 #'      See ‘Details’.}
-#'      \item{\code{pmf}:}{density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#'      \item{\code{pmf}:}{density of
+#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #'       against the specified quantiles.}
 #'    }
 #'
@@ -302,18 +325,21 @@ dtnl <- function(k, n, l, exact = "NULL", trial = 100000) {
 }
 
 
-#' quantile function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' quantile function of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @export
 #' @rdname tnl.test
 #' @param p vector of probabilities.
 #' @param n sample size.
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @param exact the method that will be used. "NULL" or a logical
 #' indicating whether an exact should be computed.
 #' See ‘Details’ for the meaning of NULL.
 #' @param trial number of trials for simulation.
 #' @description  \code{\link{qtnl}} gives the quantile function of
-#' \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} against the specified probabilities.
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'  against the specified probabilities.
 #' @return \code{\link{qtnl}} returns a list with the following components
 #'    \describe{
 #'      \item{\code{method}:}{The method that was used (exact or simulation).
@@ -365,21 +391,26 @@ qtnl <- function(p, n, l, exact = "NULL", trial = 100000) {
 }
 
 
-#' Random generation for the \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' Random generation for the
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @export
 #' @rdname tnl.test
 #' @param N number of observations. If length(N) > 1, the length is taken
 #'               to be the number required.
 #' @param n sample size.
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @description \code{\link{rtnl}} generates random values from
-#'               \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @return \code{\link{rtnl}} return *N* of the generated random values.
 #' @examples
 #' ##############
 #' rtnl(N = 15, n = 7, l = 2)
 #' # [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4
 rtnl <- function(N, n, l) {
+  if (any(n < (2 * l + 1))) {
+    stop(paste("n must be > 2l", "\n", ""))
+  }
   stest <- function(a, b, l) {
     a <- sort(a)
     b <- sort(b)
@@ -405,15 +436,18 @@ rtnl <- function(N, n, l) {
   return(statistic)
 }
 
-#' The density of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' The density of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #'    under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param n sample size.
 #' @param gamma parameter of Lehmann alternative
 #' @description \code{\link{dtnl.lehmann}}  gives the density of
-#'       \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+#'  \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'   under Lehmann alternatives.
 #' @return \code{\link{dtnl.lehmann}} return vector of the density under Lehmann
 #' alternatives against the specified gamma.
 #' @examples
@@ -441,8 +475,11 @@ dtnl.lehmann <- function(l, n, gamma) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
-           else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) {
+          zz2[i] <- 1
+        } else {
+          zz2[i] <- 0
+        }
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -451,8 +488,8 @@ dtnl.lehmann <- function(l, n, gamma) {
         plam <- 1
         for (jj in 1:(n - 1)) {
           plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) /
-                   gamma(sum(m[1:(jj + 1)])
-          + jj * gamma + 1)
+            gamma(sum(m[1:(jj + 1)])
+            + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(m) + n * gamma) / gamma(n + n * gamma + 1)
         const <- (factorial(n) * factorial(n) * (gamma^n)) / factorial(m[1])
@@ -465,15 +502,18 @@ dtnl.lehmann <- function(l, n, gamma) {
   return(lehmann)
 }
 
-#' The distribution function of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' The distribution function of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #'            under Lehmann alternatives.
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param n sample size.
 #' @param gamma parameter of Lehmann alternative
 #' @description \code{\link{ptnl.lehmann}}  gives the  distribution function of
-#' \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii} under Lehmann alternatives.
+#' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+#'  under Lehmann alternatives.
 #' @return \code{\link{ptnl.lehmann}} return vector of the distribution under
 #' Lehmann alternatives against the specified gamma.
 #' @examples
@@ -501,8 +541,11 @@ ptnl.lehmann <- function(l, n, gamma) {
         if (sum(m[1:(i + l)]) >= i) zz2[i] <- 1 else zz2[i] <- 0
       }
       for (i in (l + 1):(n - l)) {
-        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) zz2[i] <- 1
-        else zz2[i] <- 0
+        if (sum(m[1:(i - l)]) < i & sum(m[1:(i + l)]) >= i) {
+          zz2[i] <- 1
+        } else {
+          zz2[i] <- 0
+        }
       }
       for (i in (n - l + 1):n) {
         if (sum(m[1:(i - l)]) < i) zz2[i] <- 1 else zz2[i] <- 0
@@ -511,8 +554,8 @@ ptnl.lehmann <- function(l, n, gamma) {
         plam <- 1
         for (jj in 1:(n - 1)) {
           plam <- plam * gamma(sum(m[1:jj]) + jj * gamma) /
-                   gamma(sum(m[1:(jj + 1)])
-          + jj * gamma + 1)
+            gamma(sum(m[1:(jj + 1)])
+            + jj * gamma + 1)
         }
         plam <- plam * gamma(sum(m) + n * gamma) / gamma(n + n * gamma + 1)
         const <- (factorial(n) * factorial(n) * (gamma^n)) / factorial(m[1])
@@ -531,26 +574,25 @@ ptnl.lehmann <- function(l, n, gamma) {
 #' Function that calculates moments
 #' @export
 #' @rdname tnl.test
-#' @param l class parameter of \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}
+#' @param l class parameter of
+#'   \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #' @param n sample size.
 #' @description \code{\link{tnl_mean}}  gives an expression for
-#' \loadmathjax \mjeqn{E(T_n^{(\ell)})}{ascii} under
-#'    \loadmathjax \mjeqn{H_0: F = G}{ascii}.
+#'\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
+#'  under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
 #' @return \code{\link{tnl_mean}} return the mean of
-#'          \loadmathjax \mjeqn{T_n^{(\ell)}}{ascii}.
+#'    \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 #' @examples
 #' ##############
 #' require(base)
 #' tnl_mean(11, 2)
 #' # [1] 8.058115
 tnl_mean <- function(n, l) {
-  a.ki <- function(n, k, i) {
-    (choose((i + k - 1), (i - 1)) *
-       choose((2 * n - i - k), (n - i))) /
-        choose((2 * n), n)
+  if (any(n < (2 * l + 1))) {
+    warning("n must be > 2l")
   }
   pi <- NULL
-  for (i in 1:10) {
+  for (i in 1:n) {
     p <- 0
     for (k in max(0, (i - l)):(i + l - 1)) {
       p <- p + a.ki(n, k, i)

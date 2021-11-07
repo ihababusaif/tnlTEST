@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # tnlTEST
 
 <!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/ihababusaif/tnlTEST/branch/master/graph/badge.svg)](https://codecov.io/gh/ihababusaif/tnlTEST?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/ihababusaif/tnlTEST/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ihababusaif/tnlTEST?branch=master)
 [![R-CMD-check](https://github.com/ihababusaif/tnlTEST/workflows/R-CMD-check/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions)
 [![pkgdown](https://github.com/ihababusaif/tnlTEST/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions/workflows/pkgdown.yaml)
 [![test-coverage](https://github.com/ihababusaif/tnlTEST/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/ihababusaif/tnlTEST/actions/workflows/test-coverage.yaml)
