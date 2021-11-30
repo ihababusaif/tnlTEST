@@ -55,15 +55,21 @@ Tn(&amp;#8467)
 against the specified probabilities.
 rtnl generates random values from
 Tn(&amp;#8467).
-dtnl.lehmann  gives the density of
-Tn(&amp;#8467)
-under Lehmann alternatives.
+tnl_mean  gives an expression for
+E(Tn(&amp;#8467))
+under H0:F=G.
 ptnl.lehmann  gives the  distribution function of
 Tn(&amp;#8467)
 under Lehmann alternatives.
-tnl_mean  gives an expression for
-E(Tn(&amp;#8467))
-under H0:F=G." />
+dtnl.lehmann  gives the density of
+Tn(&amp;#8467)
+under Lehmann alternatives.
+qtnl.lehmann gives the quantile function of
+Tn(&amp;#8467)
+against the specified probabilities under Lehmann alternatives.
+rtnl.lehmann generates random values from
+Tn(&amp;#8467)
+under Lehmann alternatives." />
 
 
 
@@ -166,15 +172,21 @@ T<sub>n</sub><sup>(&#8467)</sup>
 against the specified probabilities.</p>
 <p><code>rtnl</code> generates random values from
 T<sub>n</sub><sup>(&#8467)</sup>.</p>
-<p><code>dtnl.lehmann</code>  gives the density of
-T<sub>n</sub><sup>(&#8467)</sup>
-under Lehmann alternatives.</p>
-<p><code>ptnl.lehmann</code>  gives the  distribution function of
-T<sub>n</sub><sup>(&#8467)</sup>
-under Lehmann alternatives.</p>
 <p><code>tnl_mean</code>  gives an expression for
 E(T<sub>n</sub><sup>(&#8467)</sup>)
 under H<sub>0</sub>:F=G.</p>
+<p><code>ptnl.lehmann</code>  gives the  distribution function of
+T<sub>n</sub><sup>(&#8467)</sup>
+under Lehmann alternatives.</p>
+<p><code>dtnl.lehmann</code>  gives the density of
+T<sub>n</sub><sup>(&#8467)</sup>
+under Lehmann alternatives.</p>
+<p><code>qtnl.lehmann</code> gives the quantile function of
+T<sub>n</sub><sup>(&#8467)</sup>
+against the specified probabilities under Lehmann alternatives.</p>
+<p><code>rtnl.lehmann</code> generates random values from
+T<sub>n</sub><sup>(&#8467)</sup>
+under Lehmann alternatives.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tnl.test</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span>, <span class='va'>l</span>, exact <span class='op'>=</span> <span class='st'>"NULL"</span><span class='op'>)</span>
@@ -187,11 +199,15 @@ under H<sub>0</sub>:F=G.</p>
 
 <span class='fu'>rtnl</span><span class='op'>(</span><span class='va'>N</span>, <span class='va'>n</span>, <span class='va'>l</span><span class='op'>)</span>
 
-<span class='fu'>dtnl.lehmann</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>n</span>, <span class='va'>gamma</span><span class='op'>)</span>
+<span class='fu'>tnl_mean</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>l</span><span class='op'>)</span>
 
-<span class='fu'>ptnl.lehmann</span><span class='op'>(</span><span class='va'>l</span>, <span class='va'>n</span>, <span class='va'>gamma</span><span class='op'>)</span>
+<span class='fu'>ptnl.lehmann</span><span class='op'>(</span><span class='va'>q</span>, <span class='va'>n</span>, <span class='va'>l</span>, <span class='va'>gamma</span><span class='op'>)</span>
 
-<span class='fu'>tnl_mean</span><span class='op'>(</span><span class='va'>n</span>, <span class='va'>l</span><span class='op'>)</span></pre>
+<span class='fu'>dtnl.lehmann</span><span class='op'>(</span><span class='va'>k</span>, <span class='va'>n</span>, <span class='va'>l</span>, <span class='va'>gamma</span><span class='op'>)</span>
+
+<span class='fu'>qtnl.lehmann</span><span class='op'>(</span><span class='va'>p</span>, <span class='va'>n</span>, <span class='va'>l</span>, <span class='va'>gamma</span><span class='op'>)</span>
+
+<span class='fu'>rtnl.lehmann</span><span class='op'>(</span><span class='va'>N</span>, <span class='va'>n</span>, <span class='va'>l</span>, <span class='va'>gamma</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,7 +223,7 @@ under H<sub>0</sub>:F=G.</p>
     <tr>
       <th>l</th>
       <td><p>class parameter of
-T<sub>n</sub><sup>(&#8467)</sup></p></td>
+T<sub>n</sub><sup>(&#8467)</sup>.</p></td>
     </tr>
     <tr>
       <th>exact</th>
@@ -238,7 +254,7 @@ to be the number required.</p></td>
     </tr>
     <tr>
       <th>gamma</th>
-      <td><p>parameter of Lehmann alternative</p></td>
+      <td><p>parameter of Lehmann alternative.</p></td>
     </tr>
     </table>
 
@@ -278,12 +294,16 @@ probabilities.</p></dd>
 </dl>
 
 <p><code>rtnl</code> return <em>N</em> of the generated random values.</p>
-<p><code>dtnl.lehmann</code> return vector of the density under Lehmann
-alternatives against the specified gamma.</p>
-<p><code>ptnl.lehmann</code> return vector of the distribution under
-Lehmann alternatives against the specified gamma.</p>
 <p><code>tnl_mean</code> return the mean of
 T<sub>n</sub><sup>(&#8467)</sup>.</p>
+<p><code>ptnl.lehmann</code> return vector of the distribution under
+Lehmann alternatives against the specified gamma.</p>
+<p><code>dtnl.lehmann</code> return vector of the density under Lehmann
+alternatives against the specified gamma.</p>
+<p><code>qtnl.lehmann</code> returns a quantile function against the specified
+probabilities under Lehmann alternatives.</p>
+<p><code>rtnl.lehmann</code> return <em>N</em> of the generated random values
+under Lehmann alternatives.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A non-parametric two-sample test is performed for testing null
@@ -363,7 +383,7 @@ Submitted paper.</p>
 <span class='r-in'><span class='co'># $cdf</span></span>
 <span class='r-in'><span class='co'># [1] 0.03030303</span></span>
 <span class='r-in'><span class='co'>##############</span></span>
-<span class='r-in'><span class='fu'>dtnl</span><span class='op'>(</span>k <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span>, trial <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>dtnl</span><span class='op'>(</span>k <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> $method</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "exact"</span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
@@ -376,7 +396,7 @@ Submitted paper.</p>
 <span class='r-in'><span class='co'># $pmf</span></span>
 <span class='r-in'><span class='co'># [1] 0.05710956</span></span>
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'><span class='fu'>qtnl</span><span class='op'>(</span><span class='fl'>.3</span>, <span class='fl'>4</span>, <span class='fl'>1</span>, exact <span class='op'>=</span> <span class='st'>"FALSE"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>qtnl</span><span class='op'>(</span>p <span class='op'>=</span> <span class='fl'>.3</span>, n <span class='op'>=</span> <span class='fl'>4</span>, l <span class='op'>=</span> <span class='fl'>1</span>, exact <span class='op'>=</span> <span class='st'>"FALSE"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='co'># $method</span></span>
 <span class='r-in'><span class='co'># [1] "Monte Carlo simulation"</span></span>
 <span class='r-in'><span class='co'>#</span></span>
@@ -386,20 +406,27 @@ Submitted paper.</p>
 <span class='r-in'><span class='co'>##############</span></span>
 <span class='r-in'><span class='fu'>rtnl</span><span class='op'>(</span>N <span class='op'>=</span> <span class='fl'>15</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] 7 5 6 6 7 3 6 6 7 6 6 4 7 3 7</span>
-<span class='r-in'><span class='co'># [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4</span></span>
-<span class='r-in'><span class='co'>##############</span></span>
-<span class='r-in'><span class='fu'>dtnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, n <span class='op'>=</span> <span class='fl'>6</span>, gamma <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span>
-<span class='r-in'><span class='co'># [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span></span>
-<span class='r-in'><span class='co'>##############</span></span>
-<span class='r-in'><span class='fu'>ptnl.lehmann</span><span class='op'>(</span>l <span class='op'>=</span> <span class='fl'>2</span>, <span class='fl'>5</span>, gamma <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span>
-<span class='r-in'><span class='co'># [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span></span>
+<span class='r-in'><span class='co'># [1] 7 5 5 6 7 5 4 7 7 6 7 3 6 3 5</span></span>
 <span class='r-in'><span class='co'>##############</span></span>
 <span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='va'>base</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>tnl_mean</span><span class='op'>(</span><span class='fl'>11</span>, <span class='fl'>2</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>tnl_mean</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>11</span>, l <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 8.058115</span>
 <span class='r-in'><span class='co'># [1] 8.058115</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>ptnl.lehmann</span><span class='op'>(</span>q <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>5</span>, l <span class='op'>=</span> <span class='fl'>2</span>, gamma <span class='op'>=</span> <span class='fl'>1.2</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.1529147</span>
+<span class='r-in'><span class='co'># [1] 0.1529147</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>dtnl.lehmann</span><span class='op'>(</span>k <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>6</span>, l <span class='op'>=</span> <span class='fl'>2</span>, gamma <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.08230829</span>
+<span class='r-in'><span class='co'># [1] 0.08230829</span></span>
+<span class='r-in'><span class='fu'>qtnl.lehmann</span><span class='op'>(</span>p <span class='op'>=</span> <span class='fl'>.3</span>, n <span class='op'>=</span> <span class='fl'>4</span>, l <span class='op'>=</span> <span class='fl'>1</span>, gamma <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2</span>
+<span class='r-in'><span class='co'># [1] 2</span></span>
+<span class='r-in'><span class='co'>##############</span></span>
+<span class='r-in'><span class='fu'>rtnl.lehmann</span><span class='op'>(</span>N <span class='op'>=</span> <span class='fl'>15</span>, n <span class='op'>=</span> <span class='fl'>7</span>, l <span class='op'>=</span> <span class='fl'>2</span>, gamma <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] 7 6 7 7 5 7 4 4 7 7 6 4 4 6 6</span>
+<span class='r-in'><span class='co'># [1] 7 6 7 7 7 6 7 5 3 7 5 3 5 4 7</span></span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
