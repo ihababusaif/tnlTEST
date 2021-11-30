@@ -126,7 +126,7 @@
 <p><code>ptnl</code> gives the distribution function of <span class="math inline">\({T_n^{(\ell)}}\)</span> against the specified quantiles.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
- <span class="fu"><a href="../reference/tnl.test.html">ptnl</a></span><span class="op">(</span>q<span class="op">=</span><span class="fl">2</span>,n<span class="op">=</span><span class="fl">6</span>,l<span class="op">=</span><span class="fl">2</span>,exact<span class="op">=</span><span class="st">"NULL"</span>,trial <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
+ <span class="fu"><a href="../reference/tnl.test.html">ptnl</a></span><span class="op">(</span>q<span class="op">=</span><span class="fl">2</span>,n<span class="op">=</span><span class="fl">6</span>,l<span class="op">=</span><span class="fl">2</span>,exact<span class="op">=</span><span class="st">"NULL"</span><span class="op">)</span>
 <span class="co">#&gt; $method</span>
 <span class="co">#&gt; [1] "exact"</span>
 <span class="co">#&gt; </span>
@@ -144,7 +144,7 @@
 <p><code>qtnl</code> gives the quantile function of <span class="math inline">\({T_n^{(\ell)}}\)</span> against the specified probabilities.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
- <span class="fu"><a href="../reference/tnl.test.html">qtnl</a></span><span class="op">(</span><span class="fl">.3</span>,<span class="fl">8</span>,<span class="fl">1</span>,exact<span class="op">=</span><span class="st">"FALSE"</span>,trial <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
+ <span class="fu"><a href="../reference/tnl.test.html">qtnl</a></span><span class="op">(</span>p<span class="op">=</span><span class="fl">.3</span>,n<span class="op">=</span><span class="fl">8</span>,l<span class="op">=</span><span class="fl">1</span>,exact<span class="op">=</span><span class="st">"FALSE"</span>,trial <span class="op">=</span> <span class="fl">100000</span><span class="op">)</span>
 <span class="co">#&gt; $method</span>
 <span class="co">#&gt; [1] "Monte Carlo simulation"</span>
 <span class="co">#&gt; </span>
@@ -154,23 +154,33 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
  <span class="fu"><a href="../reference/tnl.test.html">rtnl</a></span><span class="op">(</span>N<span class="op">=</span><span class="fl">15</span>,n<span class="op">=</span><span class="fl">7</span>,l<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt;  [1] 5 4 5 7 7 6 7 7 7 7 5 6 7 6 4</span></code></pre></div>
-<p><code>dtnl.lehmann</code> gives the density of <span class="math inline">\({T_n^{(\ell)}}\)</span> under Lehmann alternatives.</p>
+<span class="co">#&gt;  [1] 5 7 6 6 7 7 7 4 6 4 5 4 5 7 7</span></code></pre></div>
+<p><code>tnl_mean</code> gives an expression for <span class="math inline">\(E({T_n^{(\ell)}})\)</span> under <span class="math inline">\({H_0:F=G}\)</span>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
- <span class="fu"><a href="../reference/tnl.test.html">dtnl.lehmann</a></span><span class="op">(</span>l<span class="op">=</span><span class="fl">2</span>,n<span class="op">=</span><span class="fl">6</span>,gamma<span class="op">=</span><span class="fl">0.8</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">base</span><span class="op">)</span>
+ <span class="fu"><a href="../reference/tnl.test.html">tnl_mean</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">11</span>, l<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 8.058115</span></code></pre></div>
 <p><code>ptnl.lehmann</code> gives the distribution function of <span class="math inline">\({T_n^{(\ell)}}\)</span> under Lehmann alternatives.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
- <span class="fu"><a href="../reference/tnl.test.html">ptnl.lehmann</a></span><span class="op">(</span>l<span class="op">=</span><span class="fl">2</span>,<span class="fl">5</span>,gamma<span class="op">=</span><span class="fl">1.2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000</span></code></pre></div>
-<p><code>mean.tnl</code> gives an expression for <span class="math inline">\(E({T_n^{(\ell)}})\)</span> under <span class="math inline">\({H_0:F=G}\)</span></p>
+<span class="fu"><a href="../reference/tnl.test.html">ptnl.lehmann</a></span><span class="op">(</span>q<span class="op">=</span><span class="fl">3</span>,l <span class="op">=</span> <span class="fl">2</span>, <span class="fl">5</span>, gamma <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.1529147</span></code></pre></div>
+<p><code>dtnl.lehmann</code> gives the density of <span class="math inline">\({T_n^{(\ell)}}\)</span> under Lehmann alternatives.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">base</span><span class="op">)</span>
- <span class="fu"><a href="../reference/tnl.test.html">tnl_mean</a></span><span class="op">(</span><span class="fl">11</span>,<span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 8.058115</span></code></pre></div>
+ <span class="fu"><a href="../reference/tnl.test.html">dtnl.lehmann</a></span><span class="op">(</span>k<span class="op">=</span><span class="fl">3</span>,l <span class="op">=</span> <span class="fl">2</span>, n <span class="op">=</span> <span class="fl">6</span>, gamma <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.08230829</span></code></pre></div>
+<p><code>qtnl.lehmann</code> returns a quantile function against the specified probabilities under Lehmann alternatives.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/tnl.test.html">qtnl.lehmann</a></span><span class="op">(</span>p<span class="op">=</span><span class="fl">.3</span>, n<span class="op">=</span><span class="fl">4</span>, l<span class="op">=</span><span class="fl">1</span>, gamma<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>
+<span class="co">#&gt; [1] 2</span></code></pre></div>
+<p><code>rtnl.lehmann</code> generates random values from <span class="math inline">\({T_n^{(\ell)}}\)</span> under Lehmann alternatives.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ihababusaif/tnlTEST">tnlTEST</a></span><span class="op">)</span>
+<span class="fu"><a href="../reference/tnl.test.html">rtnl.lehmann</a></span><span class="op">(</span>N <span class="op">=</span> <span class="fl">15</span>, n <span class="op">=</span> <span class="fl">7</span>, l <span class="op">=</span> <span class="fl">2</span>,gamma<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>
+<span class="co">#&gt;  [1] 5 3 6 2 3 5 4 4 7 7 5 4 7 3 4</span></code></pre></div>
 </div>
 <div id="corresponding-author" class="section level2">
 <h2 class="hasAnchor">
