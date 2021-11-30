@@ -74,7 +74,7 @@ require(stats)
 
 ``` r
 library(tnlTEST)
- ptnl(q=2,n=6,l=2,exact="NULL",trial = 100000)
+ ptnl(q=2,n=6,l=2,exact="NULL")
 #> $method
 #> [1] "exact"
 #> 
@@ -100,7 +100,7 @@ against the specified probabilities.
 
 ``` r
 library(tnlTEST)
- qtnl(.3,8,1,exact="FALSE",trial = 100000)
+ qtnl(p=.3,n=8,l=1,exact="FALSE",trial = 100000)
 #> $method
 #> [1] "Monte Carlo simulation"
 #> 
@@ -113,16 +113,17 @@ library(tnlTEST)
 ``` r
 library(tnlTEST)
  rtnl(N=15,n=7,l=2)
-#>  [1] 5 7 6 5 4 7 6 6 5 6 6 3 6 3 6
+#>  [1] 7 6 7 7 7 7 7 5 6 4 7 6 5 5 5
 ```
 
-`dtnl.lehmann` gives the density of *T*<sub>*n*</sub><sup>(ℓ)</sup>
-under Lehmann alternatives.
+`tnl_mean` gives an expression for *E*(*T*<sub>*n*</sub><sup>(ℓ)</sup>)
+under *H*<sub>0</sub> : *F* = *G*.
 
 ``` r
 library(tnlTEST)
- dtnl.lehmann(l=2,n=6,gamma=0.8)
-#> [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764
+require(base)
+ tnl_mean(n=11, l=2)
+#> [1] 8.058115
 ```
 
 `ptnl.lehmann` gives the distribution function of
@@ -130,18 +131,35 @@ library(tnlTEST)
 
 ``` r
 library(tnlTEST)
- ptnl.lehmann(l=2,5,gamma=1.2)
-#> [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
+ptnl.lehmann(q=3,l = 2, 5, gamma = 1.2)
+#> [1] 0.1529147
 ```
 
-`mean.tnl` gives an expression for *E*(*T*<sub>*n*</sub><sup>(ℓ)</sup>)
-under *H*<sub>0</sub> : *F* = *G*.
+`dtnl.lehmann` gives the density of *T*<sub>*n*</sub><sup>(ℓ)</sup>
+under Lehmann alternatives.
 
 ``` r
 library(tnlTEST)
-require(base)
- tnl_mean(11,2)
-#> [1] 8.058115
+ dtnl.lehmann(k=3,l = 2, n = 6, gamma = 0.8)
+#> [1] 0.08230829
+```
+
+`qtnl.lehmann` returns a quantile function against the specified
+probabilities under Lehmann alternatives.
+
+``` r
+library(tnlTEST)
+qtnl.lehmann(p=.3, n=4, l=1, gamma=0.5)
+#> [1] 2
+```
+
+`rtnl.lehmann` generates random values from
+*T*<sub>*n*</sub><sup>(ℓ)</sup> under Lehmann alternatives.
+
+``` r
+library(tnlTEST)
+rtnl.lehmann(N = 15, n = 7, l = 2,gamma=0.5)
+#>  [1] 7 7 6 6 7 3 2 7 2 6 4 3 7 7 3
 ```
 
 ## Corresponding Author

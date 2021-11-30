@@ -6,9 +6,11 @@
 \alias{dtnl}
 \alias{qtnl}
 \alias{rtnl}
-\alias{dtnl.lehmann}
-\alias{ptnl.lehmann}
 \alias{tnl_mean}
+\alias{ptnl.lehmann}
+\alias{dtnl.lehmann}
+\alias{qtnl.lehmann}
+\alias{rtnl.lehmann}
 \title{Non-parametric tests for the two-sample problem based
 on order statistics and power comparisons}
 \usage{
@@ -22,11 +24,15 @@ qtnl(p, n, l, exact = "NULL", trial = 1e+05)
 
 rtnl(N, n, l)
 
-dtnl.lehmann(l, n, gamma)
-
-ptnl.lehmann(l, n, gamma)
-
 tnl_mean(n, l)
+
+ptnl.lehmann(q, n, l, gamma)
+
+dtnl.lehmann(k, n, l, gamma)
+
+qtnl.lehmann(p, n, l, gamma)
+
+rtnl.lehmann(N, n, l, gamma)
 }
 \arguments{
 \item{x}{the first (non-empty) numeric vector of data values.}
@@ -34,7 +40,7 @@ tnl_mean(n, l)
 \item{y}{the second (non-empty) numeric vector of data values.}
 
 \item{l}{class parameter of
-\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}}
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.}
 
 \item{exact}{the method that will be used. "NULL" or a logical
 indicating whether an exact should be computed.
@@ -51,7 +57,7 @@ See ‘Details’ for the meaning of NULL.}
 \item{N}{number of observations. If length(N) > 1, the length is taken
 to be the number required.}
 
-\item{gamma}{parameter of Lehmann alternative}
+\item{gamma}{parameter of Lehmann alternative.}
 }
 \value{
 \code{\link{tnl.test}} returns a list with the following
@@ -89,14 +95,20 @@ probabilities.}
 
 \code{\link{rtnl}} return \emph{N} of the generated random values.
 
-\code{\link{dtnl.lehmann}} return vector of the density under Lehmann
-alternatives against the specified gamma.
+\code{\link{tnl_mean}} return the mean of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 
 \code{\link{ptnl.lehmann}} return vector of the distribution under
 Lehmann alternatives against the specified gamma.
 
-\code{\link{tnl_mean}} return the mean of
-\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
+\code{\link{dtnl.lehmann}} return vector of the density under Lehmann
+alternatives against the specified gamma.
+
+\code{\link{qtnl.lehmann}} returns a quantile function against the specified
+probabilities under Lehmann alternatives.
+
+\code{\link{rtnl.lehmann}} return \emph{N} of the generated random values
+under Lehmann alternatives.
 }
 \description{
 \code{\link{tnl.test}} performs a nonparametric test for
@@ -117,17 +129,25 @@ against the specified probabilities.
 \code{\link{rtnl}} generates random values from
 \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}.
 
-\code{\link{dtnl.lehmann}}  gives the density of
-\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
-under Lehmann alternatives.
+\code{\link{tnl_mean}}  gives an expression for
+\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
+under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
 
 \code{\link{ptnl.lehmann}}  gives the  distribution function of
 \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 under Lehmann alternatives.
 
-\code{\link{tnl_mean}}  gives an expression for
-\ifelse{html}{\out{E(T<sub>n</sub><sup>(&#8467)</sup>)}}{\eqn{E(T_n^{(\ell)})}}
-under \ifelse{html}{\out{H<sub>0</sub>:F=G}}{\eqn{H_0:F=G}}.
+\code{\link{dtnl.lehmann}}  gives the density of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+under Lehmann alternatives.
+
+\code{\link{qtnl.lehmann}} gives the quantile function of
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+against the specified probabilities under Lehmann alternatives.
+
+\code{\link{rtnl.lehmann}} generates random values from
+\ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
+under Lehmann alternatives.
 }
 \details{
 A non-parametric two-sample test is performed for testing null
@@ -185,14 +205,14 @@ ptnl(q = 2, n = 6, l = 2, trial = 100000)
 # $cdf
 # [1] 0.03030303
 ##############
-dtnl(k = 3, n = 7, l = 2, trial = 100000)
+dtnl(k = 3, n = 7, l = 2)
 # $method
 # [1] "exact"
 #
 # $pmf
 # [1] 0.05710956
 \dontrun{
-qtnl(.3, 4, 1, exact = "FALSE")
+qtnl(p = .3, n = 4, l = 1, exact = "FALSE")
 # $method
 # [1] "Monte Carlo simulation"
 #
@@ -201,17 +221,22 @@ qtnl(.3, 4, 1, exact = "FALSE")
 }
 ##############
 rtnl(N = 15, n = 7, l = 2)
-# [1] 6 7 6 6 3 5 7 7 7 7 7 6 5 7 4
-##############
-dtnl.lehmann(l = 2, n = 6, gamma = 0.8)
-# [1] 0.00000000 0.03757203 0.08230829 0.14229514 0.23276690 0.50505764
-##############
-ptnl.lehmann(l = 2, 5, gamma = 1.2)
-# [1] 0.0000000 0.0444164 0.1529147 0.3694389 1.0000000
+# [1] 7 5 5 6 7 5 4 7 7 6 7 3 6 3 5
 ##############
 require(base)
-tnl_mean(11, 2)
+tnl_mean(n = 11, l = 2)
 # [1] 8.058115
+##############
+ptnl.lehmann(q = 3, n = 5, l = 2, gamma = 1.2)
+# [1] 0.1529147
+##############
+dtnl.lehmann(k = 3, n = 6, l = 2, gamma = 0.8)
+# [1] 0.08230829
+qtnl.lehmann(p = .3, n = 4, l = 1, gamma = 0.5)
+# [1] 2
+##############
+rtnl.lehmann(N = 15, n = 7, l = 2, gamma = 0.5)
+# [1] 7 6 7 7 7 6 7 5 3 7 5 3 5 4 7
 }
 \references{
 Karakaya K. et al. (2021).

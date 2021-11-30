@@ -51,7 +51,7 @@ require(stats)
 ```ptnl``` gives the distribution function of ${T_n^{(\ell)}}$ against the specified quantiles.
 ```{r}
 library(tnlTEST)
- ptnl(q=2,n=6,l=2,exact="NULL",trial = 100000)
+ ptnl(q=2,n=6,l=2,exact="NULL")
 ```
 
 ```dtnl``` gives the density of ${T_n^{(\ell)}}$ against the specified quantiles.
@@ -63,7 +63,7 @@ library(tnlTEST)
 ```qtnl``` gives the quantile function of ${T_n^{(\ell)}}$ against the specified probabilities.
 ```{r}
 library(tnlTEST)
- qtnl(.3,8,1,exact="FALSE",trial = 100000)
+ qtnl(p=.3,n=8,l=1,exact="FALSE",trial = 100000)
 ```
 
 ```rtnl``` generates random values from ${T_n^{(\ell)}}$.
@@ -72,29 +72,41 @@ library(tnlTEST)
  rtnl(N=15,n=7,l=2)
 ```
 
-
-```dtnl.lehmann``` gives the density of ${T_n^{(\ell)}}$ under Lehmann alternatives. 
+```tnl_mean``` gives an expression for $E({T_n^{(\ell)}})$ under ${H_0:F=G}$.
 ```{r}
 library(tnlTEST)
- dtnl.lehmann(l=2,n=6,gamma=0.8)
+require(base)
+ tnl_mean(n=11, l=2)
 ```
-
 
 
 ```ptnl.lehmann``` gives the  distribution function of ${T_n^{(\ell)}}$ under Lehmann alternatives.
 ```{r}
 library(tnlTEST)
- ptnl.lehmann(l=2,5,gamma=1.2)
+ptnl.lehmann(q=3,l = 2, 5, gamma = 1.2)
 ```
 
 
-
-```mean.tnl``` gives an expression for $E({T_n^{(\ell)}})$ under ${H_0:F=G}$
+```dtnl.lehmann``` gives the density of ${T_n^{(\ell)}}$ under Lehmann alternatives. 
 ```{r}
 library(tnlTEST)
-require(base)
- tnl_mean(11,2)
+ dtnl.lehmann(k=3,l = 2, n = 6, gamma = 0.8)
 ```
+
+
+```qtnl.lehmann``` returns a quantile function against the specified probabilities under Lehmann alternatives.                      
+```{r}
+library(tnlTEST)
+qtnl.lehmann(p=.3, n=4, l=1, gamma=0.5)
+```
+
+```rtnl.lehmann``` generates random values from ${T_n^{(\ell)}}$ under Lehmann alternatives.
+```{r}
+library(tnlTEST)
+rtnl.lehmann(N = 15, n = 7, l = 2,gamma=0.5)
+```
+
+
 
 ## Corresponding Author
 Department of Statistics, Faculty of Science, Selcuk University, 42250, Konya, Turkey  <br />
