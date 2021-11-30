@@ -667,8 +667,8 @@ dtnl.lehmann <- function(k, n, l, gamma) {
 #' @description  \code{\link{qtnl.lehmann}} gives the quantile function of
 #' \ifelse{html}{\out{T<sub>n</sub><sup>(&#8467)</sup>}}{\eqn{T_n^{(\ell)}}}
 #'  against the specified probabilities under Lehmann alternatives.
-#' @return \code{\link{qtnl.lehmann}} returns a quantile function against the specified
-#'                                probabilities under Lehmann alternatives.
+#' @return \code{\link{qtnl.lehmann}} returns a quantile function
+#' against the specified probabilities under Lehmann alternatives.
 #'
 #' @examples
 #' qtnl.lehmann(p = .3, n = 4, l = 1, gamma = 0.5)
